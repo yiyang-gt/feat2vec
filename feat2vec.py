@@ -31,6 +31,7 @@ import os
 import time
 #from copy import deepcopy
 import threading
+import numpy as np
 try:
     from queue import Queue
 except ImportError:
@@ -165,7 +166,7 @@ class Feat2Vec(object):
                 rand_insts = [instances[idx] for idx in rand_idx]
                 all_insts += rand_insts
             self.build_vocab(all_insts)
-            self.train(instances)
+            self.train(all_insts)
 
 
     def build_vocab(self, instances):
