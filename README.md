@@ -19,9 +19,9 @@ A **light demo** for part-of-speech tagging of tweets is also provided, using da
   * python twproc.py
 2. Obtain the baseline (no adaptation) SVM tagging results by running
   * python twpos.py none
-3. Obtain the [marginalized Denoising Autoencoders adaptation](http://www.cc.gatech.edu/~yyang319/download/yang-acl-2014.pdf) results by running
+3. Obtain the [marginalized Denoising Autoencoders](http://www.cc.gatech.edu/~yyang319/download/yang-acl-2014.pdf) adaptation results by running
   * python twpos.py mldae
-4. Obtain the [feature embedding](http://arxiv.org/pdf/1412.4385v1.pdf) results by running
+4. Obtain the [feature embedding](http://arxiv.org/pdf/1412.4385v1.pdf) adaptation results by running
   * python twpos.py feat2vec
   
   

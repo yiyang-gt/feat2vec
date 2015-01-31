@@ -1,6 +1,6 @@
 
 """
-Marginalized Linear Denoising Autoencoders
+Marginalized Linear Denoising Autoencoders with Structured Dropout noise
 
 Author: Yi Yang
 Email: yangyiycc@gmail.com
