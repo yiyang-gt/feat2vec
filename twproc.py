@@ -19,7 +19,7 @@ except:
 
 logger = logging.getLogger("da.prepare.data")
 
-def generate_data(conll_files, thre=20):
+def generate_data(conll_files, thre=50):
     '''
     Generate all needed data structs including:
     1. spmat: n x d instance - feature sparse matrix
@@ -118,6 +118,32 @@ def load_data(fname):
     obj = pickle.load(f)
     f.close()
     return obj
+
+def save_features(conll_files, feat_file, feat_dict_file):
+    """
+    Extract features for POS tagging from COOL formated files
+    save features into feat_file
+    save dictionary mapping features to feature template ids into feat_dict_file
+    """
+    template_dict = {'word':0, 'prevword':1, 'nextword':2, 'prevprevword':3, 'nextnextword':4, 
+                    'prefix1':5, 'prefix2':6, 'prefix3':7, 'prefix4':8, 'suffix1':9, 'suffix2':10,
+                    'suffix3':11, 'suffix4':12, 
+                    'ContainsNum':13, 'ContainsUpper':14, 'ContainsHyphen':15}
+    feats = set()
+    ff = open(feat_file, "w")
+    fd = open(feat_dict_file, "w")
+    for fname in conll_files:
+        attrs, loclabels, locsents = attribute_getter(fname)
+        for features in attrs: # iterate over instances
+            for key in features.keys(): # iterate over features
+                feat = key + '=' + features[key]
+                ff.write(feat + " ")
+                if feat not in feats:
+                    fd.write(feat + "\t" + str(template_dict[key]) + "\n")
+                    feats.add(feat)
+            ff.write("\n")
+    fd.close()
+    ff.close()
 
 def attribute_getter(infile):
     """
@@ -234,7 +260,8 @@ if __name__ == '__main__':
     logger.info('begin logging')
     base = './data/twitter/'
     conll_files = [base+fname for fname in os.listdir(base) if fname.endswith('.conll')]
-    data = generate_data(conll_files, 50)
-    save_data(data, './data/dataset_twitter.pkl') 
+    save_features(conll_files, "./data/twitter_feat.txt", "./data/twitter_feat_dict.txt")
+    #data = generate_data(conll_files, 50)
+    #save_data(data, './data/dataset_twitter.pkl') 
     logger.info('end logging')
 

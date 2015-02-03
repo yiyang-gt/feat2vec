@@ -272,8 +272,6 @@ class Feat2Vec(object):
                         fidx -= 1
                 table_offsets.append(table_offsets[-1]+template_sum*100)
     
-            print "table offsets ================== "
-            print table_offsets
             self.table_offsets = table_offsets
 
 
@@ -361,6 +359,29 @@ class Feat2Vec(object):
         for i in xrange(len(self.vocab)):
             self.syn0[i] = (random.rand(self.layer1_size) - 0.5) / self.layer1_size
         self.syn1neg = zeros((len(self.vocab), self.layer1_size), dtype=REAL)
+
+
+    def save_word2vec_format(self, fname, fvocab=None, binary=False):
+        """
+        Store the input-hidden weight matrix in the same format used by the original
+        C word2vec-tool, for compatibility.
+        """
+        if fvocab is not None:
+            logger.info("Storing vocabulary in %s" % (fvocab))
+            with utils.smart_open(fvocab, 'wb') as vout:
+                for word, vocab in sorted(iteritems(self.vocab), key=lambda item: -item[1].count):
+                    vout.write(utils.to_utf8("%s %s\n" % (word, vocab.count)))
+        logger.info("storing %sx%s projection weights into %s" % (len(self.vocab), self.layer1_size, fname))
+        assert (len(self.vocab), self.layer1_size) == self.syn0.shape
+        with utils.smart_open(fname, 'wb') as fout:
+            fout.write(utils.to_utf8("%s %s\n" % self.syn0.shape))
+            # store in sorted order: most frequent words at the top
+            for word, vocab in sorted(iteritems(self.vocab), key=lambda item: -item[1].count):
+                row = self.syn0[vocab.index]
+                if binary:
+                    fout.write(word + b" " + row.tostring())
+                else:
+                    fout.write("%s %s\n" % (word, ' '.join("%f" % val for val in row)))
 
 
     def __getitem__(self, word):
