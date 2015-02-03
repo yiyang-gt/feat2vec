@@ -6,7 +6,7 @@ contact: yangyiycc@gmail.com
 
 ## Basic Description ##
 
-**Python code for ICLR 2015 submission**: [Unsupervised Domain Adaptation with Feature Embeddings](http://arxiv.org/pdf/1412.4385v1.pdf).
+Python code for ICLR 2015 submission: [Unsupervised Domain Adaptation with Feature Embeddings](http://arxiv.org/pdf/1412.4385v1.pdf).
 
 ## Requirements ##
 
@@ -20,7 +20,7 @@ contact: yangyiycc@gmail.com
 
 ## Demo ##
 
-A **demo** is available by running 
+A demo is available by running 
 * python save.py --feature_dict_file data/twitter_feat_dict.txt --dim 25 data/twitter_feat.txt data/twitter_embeddings.txt
 
 See details by running
@@ -28,11 +28,11 @@ See details by running
 
 ## Domain Adaptation for Twitter POS tagging ##
 
-A **light demo** for part-of-speech tagging of tweets is also provided, using data from CMU [Twitter NLP project](https://github.com/brendano/ark-tweet-nlp/). 
+A light demo for part-of-speech tagging of tweets is also provided, using data from CMU [Twitter NLP project](https://github.com/brendano/ark-tweet-nlp/). 
 
 oct27 dataset is regarded as source data, and daily547 dataset is regarded as target data. We also sample some unlabeled tweets randomly (see data/twitter folder).
 
-**Run the demo:**
+Run the demo:
 
 1. Prepare the data (extract features, select pivots, etc.) by running
   * python twproc.py

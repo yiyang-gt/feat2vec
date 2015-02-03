@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 
 '''
-Test different domain adaptation methods using SVM tagger
-A light demo for part-of-speech tagging of tweets
+A demo for saving feature embeddings
 
 Author: Yi Yang
 Email: yangyiycc@gmail.com
