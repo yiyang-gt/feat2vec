@@ -20,11 +20,18 @@ Python code for ICLR 2015 submission: [Unsupervised Domain Adaptation with Featu
 
 ## Demo ##
 
-A demo is available by running 
-* python save.py --feature_dict_file data/twitter_feat_dict.txt --dim 25 data/twitter_feat.txt data/twitter_embeddings.txt
+A demo for saving feature embeddings to a txt/bin file is available (python save_embeddings.py -h)
 
-See details by running
-* python save.py -h
+Given a feature file (data/twitter_feat.txt) in which each line corresponds to features of one instance, and save feature embeddings to a txt file (data/twitter_embeddings.txt):
+
+1. If features employ bag-of-word (BoW) representation (no feature templates involved)
+  * python save_embeddings.py --bow 1 --dim 25 data/twitter_feat.txt data/twitter_embeddings.txt
+2. If features employ structured representation (extract features by feature templates), and given the feature-template mapping file (data/twitter_feat_template.txt)
+  * python save_embeddings.py --feature_template_file data/twitter_feat_template.txt --dim 25 data/twitter_feat.txt data/twitter_embeddings.txt
+3. If features employ structured representation (extract features by feature templates), and given the template prefix file
+  * python save_embeddings.py --template_prefix_file data/twitter_template_prefix.txt --dim 25 data/twitter_feat.txt data/twitter_embeddings.txt
+
+
 
 ## Domain Adaptation for Twitter POS tagging ##
 
