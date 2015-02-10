@@ -20,7 +20,7 @@ Python code for ICLR 2015 submission: [Unsupervised Domain Adaptation with Featu
 
 ## Demo ##
 
-A demo for saving feature embeddings to a txt/bin file is available (python save_embeddings.py -h)
+A demo for saving feature embeddings to a txt/bin file is available (python save_embeddings.py -h).
 
 Given a feature file (data/twitter_feat.txt) in which each line corresponds to features of one instance, save feature embeddings to a txt file (data/twitter_embeddings.txt):
 
@@ -31,6 +31,7 @@ Given a feature file (data/twitter_feat.txt) in which each line corresponds to f
 3. If features employ structured representation (extract features by feature templates), and given the template prefix file (data/twitter_template_prefix.txt)
   * python save_embeddings.py --template_prefix_file data/twitter_template_prefix.txt --dim 25 data/twitter_feat.txt data/twitter_embeddings.txt
 
+See **save_features** method of twproc.py for how to generate data/twitter_feat.txt and data/twitter_feat_template.txt files given files in CONLL POS format.
 
 
 ## Domain Adaptation for Twitter POS tagging ##

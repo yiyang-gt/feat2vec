@@ -260,8 +260,8 @@ if __name__ == '__main__':
     logger.info('begin logging')
     base = './data/twitter/'
     conll_files = [base+fname for fname in os.listdir(base) if fname.endswith('.conll')]
-    save_features(conll_files, "./data/twitter_feat.txt", "./data/twitter_feat_dict.txt")
-    #data = generate_data(conll_files, 50)
-    #save_data(data, './data/dataset_twitter.pkl') 
+    save_features(conll_files, "./data/twitter_feat.txt", "./data/twitter_feat_template.txt")
+    data = generate_data(conll_files, 50)
+    save_data(data, './data/dataset_twitter.pkl') 
     logger.info('end logging')
 
