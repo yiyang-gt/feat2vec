@@ -7,8 +7,8 @@ contact: yangyiycc@gmail.com
 ## Basic Description ##
 
 Python code for 
-* NAACL 2015 paper: [Unsupervised Domain Adaptation with Feature Embeddings](http://www.cc.gatech.edu/~yyang319/#)
-* ICLR 2015 submission: [Unsupervised Domain Adaptation with Feature Embeddings](http://arxiv.org/pdf/1412.4385v1.pdf).
+* NAACL 2015 paper: [Unsupervised Domain Adaptation with Feature Embeddings](http://www.cc.gatech.edu/~yyang319/yang-naacl-2015.pdf)
+* ICLR 2015 paper: [Unsupervised Domain Adaptation with Feature Embeddings](http://arxiv.org/pdf/1412.4385v3.pdf).
 
 ## Requirements ##
 

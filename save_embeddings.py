@@ -61,14 +61,14 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("feature_file", help="feature file, each line corresponds to an instance")
     parser.add_argument("output_file", help="output file for feature embeddings")
-    parser.add_argument("--bow", type=int, help="bag of words representation, default is 0 (structured representation)")
+    parser.add_argument("--bow", type=int, default=0, help="bag of words representation, default is 0 (structured representation)")
     parser.add_argument("--feature_template_file", help="feature-template mappings file, only work if --bow=0")
     parser.add_argument("--template_prefix_file", help="template prefices file, only work if --bow=0")
-    parser.add_argument("--dim", type=int, help="embedding size, default is 50")
-    parser.add_argument("--epoch", type=int, help="training epoch, default is 1")
-    parser.add_argument("--negative", type=int, help="number of negative samplers, default is 5")
-    parser.add_argument("--workers", type=int, help="number of threads, default is 4")
-    parser.add_argument("--binary_output", help="number of threads, default is 4")
+    parser.add_argument("--dim", type=int, default=50, help="embedding size, default is 50")
+    parser.add_argument("--epoch", type=int, default=1, help="training epoch, default is 1")
+    parser.add_argument("--negative", type=int, default=5, help="number of negative samplers, default is 5")
+    parser.add_argument("--workers", type=int, default=4, help="number of threads, default is 4")
+    parser.add_argument("--binary_output", type=int, default=1, help="binary output or not, default is 1 (binary)")
     args = parser.parse_args()
 
     if args.bow == 1: bow = True
@@ -76,14 +76,10 @@ if __name__ == '__main__':
     if bow == False and args.feature_template_file is None and args.template_prefix_file is None:
         print "please provide --feature_template_file argument or --template_prefix_file"
         sys.exit()
-    if args.dim is not None: dim = args.dim
-    else: dim = 50
-    if args.epoch is not None: epoch = args.epoch
-    else: epoch = 1
-    if args.negative is not None: negative = args.negative
-    else: negative = 5
-    if args.workers is not None: workers = args.workers
-    else: workers = 4
+    dim = args.dim
+    epoch = args.epoch
+    negative = args.negative
+    workers = args.workers
     if args.binary_output == 1: binary = True
     else: binary = False
 
